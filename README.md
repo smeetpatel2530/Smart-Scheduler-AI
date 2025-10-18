@@ -151,7 +151,6 @@ Create `.env` files in both `backend/` and `frontend/` from `.env.example`.
 
 ```
 PORT=3001
-OPENAI_API_KEY=sk-...
 GOOGLE_CLIENT_ID=your-google-client-id.apps.googleusercontent.com
 GOOGLE_CLIENT_SECRET=your-google-client-secret
 GOOGLE_REDIRECT_URI=http://localhost:3001/auth/google/callback
@@ -162,8 +161,8 @@ TEST_MODE=false
 ### `frontend/.env.example`
 
 ```
-VITE_BACKEND_URL=http://localhost:3001
-VITE_TEST_MODE=false
+REACT_APP_API_URL=http://localhost:3001
+TEST_MODE=false
 ```
 
 > **Note:** For production, set your actual deployed backend URL (Render) in frontend environment variable on Vercel settings instead of localhost.
@@ -202,7 +201,7 @@ When enabled, the backend will return the extracted event payload but will NOT c
 
 ---
 
-## Deploying (Free)
+## Deployment
 
 ### Backend → Render
 
@@ -221,8 +220,8 @@ When enabled, the backend will return the extracted event payload but will NOT c
 2. Import Project → Connect GitHub → select `frontend` folder.
 3. Set environment variables in Vercel:
 
-   * `VITE_BACKEND_URL` → `https://your-backend.onrender.com`
-   * `VITE_TEST_MODE` → `false`
+   * `REACT_APP_API_URL` → `https://your-backend.onrender.com`
+   * `TEST_MODE` → `false`
 4. Deploy. Vercel will provide the live frontend URL (example: `https://smart-scheduler-frontend.vercel.app`).
 
 ---
@@ -265,31 +264,6 @@ curl -X POST http://localhost:3001/api/events \
 
 ---
 
-## Resume-Ready Short Description
-
-**Smart Scheduler AI** — A full-stack AI scheduling assistant that creates Google Calendar events from natural language commands. Built with React (Tailwind), Node/Express, OpenAI for entity extraction, and Google Calendar API. Deployed on Vercel (frontend) and Render (backend). Demo: [https://smart-scheduler-frontend.vercel.app](https://smart-scheduler-frontend.vercel.app)
-
----
-
-## Interview Questions (with short answers)
-
-**Q1. How does the NLP parsing work?**
-A1. We pass the user text to an LLM (OpenAI) with a prompt that requests structured JSON (title, date, start/end, attendees). The backend validates and normalizes results (dates → ISO).
-
-**Q2. How do you handle timezone and date parsing?**
-A2. Convert extracted dates to ISO using libraries like `date-fns` or `luxon`. Use user's Google Calendar timezone (available via profile or Calendar settings).
-
-**Q3. How do you secure OAuth tokens?**
-A3. Tokens are stored server-side in encrypted session storage or database. Use HTTPS in production, rotate credentials, and follow OAuth best practices.
-
-**Q4. What are major edge cases?**
-A4. Ambiguous times (“tomorrow morning”), missing participants, recurring events; solved via confirmation UI and fallback prompts.
-
-**Q5. How to scale this app?**
-A5. Move sessions/tokens to a DB (Redis), add rate-limiting, and move AI calls through a queue for heavy usage.
-
----
-
 ## Tips & Next Steps (Improvements)
 
 * Add voice input (Web Speech API).
@@ -307,12 +281,6 @@ Created by **Smeet Patel** — reach out on GitHub: [https://github.com/smeetpat
 
 ---
 
-## Final — Copy-Paste README Template
-
-> Copy the entire contents of this README into your `README.md` file in the root of the new `smart-scheduler-ai` repository.
-> Add the `frontend-live.png` and `backend-live.png` screenshots into `frontend/public/assets/` and `backend/assets/` respectively so the images render on GitHub.
-
----
 
 If you want, I will:
 

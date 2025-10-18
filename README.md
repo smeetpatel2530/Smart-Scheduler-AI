@@ -44,7 +44,7 @@ Smart Scheduler AI accepts natural-language scheduling requests, uses an AI mode
 ## Features
 
 * Natural language event scheduling (e.g., “Schedule a call with Priya next Wednesday at 4 PM”)
-* Entity extraction via OpenAI (or pluggable LLM) — date, time, title, attendees
+* Entity extraction via natural language parser (or pluggable LLM) — date, time, title, attendees
 * Google OAuth 2.0 sign-in and Calendar integration
 * Chat-like UI with history and success message containing event link
 * Test Mode (works offline and just prints extracted details)
@@ -91,23 +91,20 @@ smart-scheduler-ai/
 ## Screenshots
 
 
-**Frontend deployed (Vercel) preview**
+## Screenshots
 
-```
-./frontend-live.png
-```
+### 🖥️ Frontend Deployed (Vercel)
+![Frontend Live Preview](./frontend-live.png)
 
-**Backend deployed (Render) logs / live**
+### ⚙️ Backend Deployed (Render)
+![Backend Logs / Live](./backend-live.png)
 
-```
-./backend/assets/backend-live.png
-```
 
 ---
 
 ## Quickstart — Run Locally
 
-> Prereqs: Node >= 16, npm/yarn, ngrok (optional), Google Cloud Console access (for OAuth credentials), OpenAI API key (or test mode).
+> Prereqs: Node >= 16, npm/yarn, ngrok (optional), Google Cloud Console access (for OAuth credentials).
 
 ### 1. Clone repo
 
@@ -166,8 +163,8 @@ TEST_MODE=false
 
 ## Backend — Important Implementation Notes
 
-* `openaiService.js` — wraps calls to OpenAI to convert natural text into structured JSON: `{ title, date, startTime, endTime, attendees }`. Use a carefully-crafted prompt to extract entities reliably.
-* `googleCalendarService.js` — authenticates users via OAuth 2.0, stores token in session, and uses Calendar API to create events.
+* `ai.js` — wraps calls to natural language parser to convert natural text into structured JSON: `{ title, date, startTime, endTime, attendees }`. Use a carefully-crafted prompt to extract entities reliably.
+* `auth.js` — authenticates users via OAuth 2.0, stores token in session, and uses Calendar API to create events.
 * Routes:
 
   * `POST /api/parse` — accept `{ text }` → returns parsed entities
@@ -275,11 +272,3 @@ This project is provided under the [MIT License](./LICENSE).
 Created by **Smeet Patel** — reach out on GitHub: [https://github.com/smeetpatel2530](https://github.com/smeetpatel2530)
 
 ---
-
-
-If you want, I will:
-
-* generate a **ready-to-paste `README.md` file** (I can paste the complete markdown now), and
-* produce the **`.env.example`** files and small `server.js` / `openaiService.js` stubs to help you push a runnable skeleton quickly.
-
-Which of the two would you like me to paste next?

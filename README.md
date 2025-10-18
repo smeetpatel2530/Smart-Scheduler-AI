@@ -54,9 +54,9 @@ Smart Scheduler AI accepts natural-language scheduling requests, uses an AI mode
 
 ## Tech Stack
 
-* Frontend: React, Vite (or CRA), TailwindCSS
+* Frontend: React, TailwindCSS
 * Backend: Node.js, Express
-* AI: OpenAI API (GPT-3.5 / GPT-4 or local LLM option)
+* AI: Deterministic natural language parser to extract title, date/time, duration, and attendees, avoiding external LLM costs and latency.
 * Calendar: Google Calendar API (OAuth 2.0)
 * Deployment: Vercel (frontend), Render (backend)
 
@@ -67,25 +67,23 @@ Smart Scheduler AI accepts natural-language scheduling requests, uses an AI mode
 ```
 smart-scheduler-ai/
 ├── backend/
-│   ├── server.js
-│   ├── package.json
-│   ├── routes/
-│   │   └── calendarRoutes.js
-│   ├── services/
-│   │   ├── openaiService.js
-│   │   └── googleCalendarService.js
-│   ├── controllers/
-│   └── .env.example
-└── frontend/
-    ├── src/
-    │   ├── components/
-    │   │   ├── ChatBox.jsx
-    │   │   ├── Message.jsx
-    │   ├── App.jsx
-    │   ├── main.jsx
-    │   └── styles/
-    ├── package.json
-    └── .env.example
+│ ├── routes/
+│ │ ├── auth.js # Google OAuth authentication
+│ │ ├── calendar.js # Calendar operations & event creation
+│ │ └── ai.js # natural language parsing
+│ ├── server.js # Main Express server
+│ ├── package.json # Backend dependencies
+│ └── .env # Environment variables template
+├── frontend/
+│ ├── src/
+│ │ ├── App.js # Main React application
+│ │ ├── App.css # Styling and animations
+│ │ ├── index.js # React entry point
+│ │ └── index.css # TailwindCSS imports
+│ ├── public/
+│ │ └── index.html # HTML template
+│ ├── package.json # Frontend dependencies
+│ └── tailwind.config.js
 ```
 
 ---

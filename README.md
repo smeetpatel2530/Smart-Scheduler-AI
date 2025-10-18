@@ -90,12 +90,11 @@ smart-scheduler-ai/
 
 ## Screenshots
 
-> Save these images into `frontend/public/assets/` and `backend/assets/` in your repo if you want them displayed on GitHub.
 
 **Frontend deployed (Vercel) preview**
 
 ```
-./frontend/public/assets/frontend-live.png
+./frontend-live.png
 ```
 
 **Backend deployed (Render) logs / live**
@@ -103,8 +102,6 @@ smart-scheduler-ai/
 ```
 ./backend/assets/backend-live.png
 ```
-
-*(Place `frontend-live.png` and `backend-live.png` into the repo `assets` folder so they show on GitHub README.)*
 
 ---
 

@@ -29,9 +29,7 @@ Type commands like *“Schedule a meeting with John tomorrow at 10 AM”* or *�
 8. [Deploying (free)](#deploying-free)
 9. [API Endpoints (Backend)](#api-endpoints-backend)
 10. [Test Mode](#test-mode)
-11. [Resume-Ready Description](#resume-ready-description)
-12. [Interview Questions (sample)](#interview-questions-sample)
-13. [License & Contact](#license--contact)
+11. [License & Contact](#license--contact)
 
 ---
 
